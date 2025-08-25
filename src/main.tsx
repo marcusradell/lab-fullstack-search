@@ -4,6 +4,7 @@ import "./index.css";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <div>Hi!</div>
+    <input />
+    <button>Search</button>
   </StrictMode>,
 );
