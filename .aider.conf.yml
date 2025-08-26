@@ -3,7 +3,7 @@ auto-commits: false
 
 auto-lint: true
 lint-cmd:
-  - "npm run format"
+  - "./scripts/aider-lint.sh"
 
 read:
   - prompts/conventions.md

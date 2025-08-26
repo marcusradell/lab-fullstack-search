@@ -44,6 +44,11 @@ export function Search() {
         <input
           value={query}
           onChange={(e) => setQuery(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              handleSearch();
+            }
+          }}
           placeholder="// ENTER SEARCH QUERY..."
           className="w-96 px-6 py-3 bg-gray-900 border-2 border-cyan-500 rounded-none 
                    text-cyan-300 placeholder-cyan-300/50 font-mono
