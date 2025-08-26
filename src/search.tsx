@@ -1,41 +1,25 @@
 import { useState } from "react";
 import { SearchResults } from "./search-results";
+import { searchApi, SearchResult } from "./api/search-api";
 
 export function Search() {
   const [query, setQuery] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [results, setResults] = useState<
-    Array<{
-      id: string;
-      title: string;
-      description: string;
-    }>
-  >([]);
+  const [results, setResults] = useState<SearchResult[]>([]);
 
-  const handleSearch = () => {
+  const handleSearch = async () => {
     if (!query.trim()) return;
 
     setIsLoading(true);
-
-    // Simulate API call with timeout
-    setTimeout(() => {
-      // Mock results
-      setResults([
-        {
-          id: "1",
-          title: "NEURAL NETWORK ARCHITECTURE",
-          description:
-            "Advanced pattern recognition system with multi-layered perceptrons.",
-        },
-        {
-          id: "2",
-          title: "QUANTUM ENCRYPTION PROTOCOL",
-          description:
-            "Secure communication channel using quantum entanglement principles.",
-        },
-      ]);
+    try {
+      const searchResults = await searchApi.search(query);
+      setResults(searchResults);
+    } catch (error) {
+      console.error("Search failed:", error);
+      // Could add error handling UI here
+    } finally {
       setIsLoading(false);
-    }, 1500);
+    }
   };
 
   return (
