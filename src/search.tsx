@@ -64,9 +64,9 @@ export function Search() {
       </div>
 
       {error && (
-        <div className="mt-4 p-4 border-2 border-red-500 bg-red-900/30 text-red-300 font-mono">
-          <div className="font-bold mb-1">[ ERROR ]</div>
-          <div>{error}</div>
+        <div className="mt-4 p-4 border-2 border-red-500 bg-red-900/50 text-red-100 font-mono shadow-lg shadow-red-900/50">
+          <div className="font-bold mb-1 text-white">[ ERROR ]</div>
+          <div className="text-red-50">{error}</div>
         </div>
       )}
 
