@@ -20,7 +20,11 @@ export function SearchResults({
   }
 
   if (results.length === 0) {
-    return null;
+    return (
+      <div className="mt-6 border-2 border-cyan-500 p-6 bg-gray-900">
+        <div className="text-cyan-300 font-mono">[ NO RESULTS FOUND ]</div>
+      </div>
+    );
   }
 
   return (
