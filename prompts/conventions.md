@@ -7,4 +7,5 @@ Only write the minimal amount of code needed to fulfill the requirements. This i
 - Prefer named exports over default exports.
 - Prefer `type` over `interface`.
 - Write files in `kebab-case`.
+- Prefer sending in explicit arguments over default parameters.
 

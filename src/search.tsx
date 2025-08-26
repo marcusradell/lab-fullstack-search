@@ -4,17 +4,19 @@ import { SearchResults } from "./search-results";
 export function Search() {
   const [query, setQuery] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [results, setResults] = useState<Array<{
-    id: string;
-    title: string;
-    description: string;
-  }>>([]);
+  const [results, setResults] = useState<
+    Array<{
+      id: string;
+      title: string;
+      description: string;
+    }>
+  >([]);
 
   const handleSearch = () => {
     if (!query.trim()) return;
-    
+
     setIsLoading(true);
-    
+
     // Simulate API call with timeout
     setTimeout(() => {
       // Mock results
@@ -22,13 +24,15 @@ export function Search() {
         {
           id: "1",
           title: "NEURAL NETWORK ARCHITECTURE",
-          description: "Advanced pattern recognition system with multi-layered perceptrons."
+          description:
+            "Advanced pattern recognition system with multi-layered perceptrons.",
         },
         {
           id: "2",
           title: "QUANTUM ENCRYPTION PROTOCOL",
-          description: "Secure communication channel using quantum entanglement principles."
-        }
+          description:
+            "Secure communication channel using quantum entanglement principles.",
+        },
       ]);
       setIsLoading(false);
     }, 1500);
@@ -56,7 +60,7 @@ export function Search() {
           [ INITIATE ]
         </button>
       </div>
-      
+
       <SearchResults results={results} isLoading={isLoading} />
     </div>
   );

@@ -1,5 +1,3 @@
-import { type ReactNode } from "react";
-
 type SearchResultsProps = {
   results: Array<{
     id: string;
@@ -9,7 +7,10 @@ type SearchResultsProps = {
   isLoading?: boolean;
 };
 
-export function SearchResults({ results, isLoading = false }: SearchResultsProps) {
+export function SearchResults({
+  results,
+  isLoading = false,
+}: SearchResultsProps) {
   if (isLoading) {
     return (
       <div className="mt-6 border-2 border-cyan-500 p-6 bg-gray-900">
