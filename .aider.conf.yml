@@ -1,9 +1,12 @@
 dark-mode: true
 auto-commits: false
 
+lint-cmd: npm run lint
+format-cmd: npm run format
+
 read:
   - prompts/conventions.md
 
+
+
 model: anthropic/claude-3-7-sonnet-20250219
-
-
