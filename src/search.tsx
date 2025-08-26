@@ -1,22 +1,35 @@
 import { useState } from "react";
 import { SearchResults } from "./search-results";
-import { searchApi, SearchResult } from "./api/search-api";
+import { searchApi, type SearchResult } from "./api/search-api";
 
 export function Search() {
   const [query, setQuery] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [results, setResults] = useState<SearchResult[]>([]);
+  const [error, setError] = useState<string | null>(null);
 
   const handleSearch = async () => {
     if (!query.trim()) return;
 
     setIsLoading(true);
+    setError(null);
+
     try {
       const searchResults = await searchApi.search(query);
       setResults(searchResults);
-    } catch (error) {
-      console.error("Search failed:", error);
-      // Could add error handling UI here
+    } catch (err) {
+      console.error("Search failed:", err);
+      setResults([]);
+
+      // Extract error message
+      const errorMessage =
+        err instanceof Error
+          ? err.message
+          : typeof err === "object" && err && "message" in err
+            ? String(err.message)
+            : "An unknown error occurred";
+
+      setError(errorMessage);
     } finally {
       setIsLoading(false);
     }
@@ -49,6 +62,13 @@ export function Search() {
           [ INITIATE ]
         </button>
       </div>
+
+      {error && (
+        <div className="mt-4 p-4 border-2 border-red-500 bg-red-900/30 text-red-300 font-mono">
+          <div className="font-bold mb-1">[ ERROR ]</div>
+          <div>{error}</div>
+        </div>
+      )}
 
       <SearchResults results={results} isLoading={isLoading} />
     </div>

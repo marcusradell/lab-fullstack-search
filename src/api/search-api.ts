@@ -4,11 +4,27 @@ export type SearchResult = {
   description: string;
 };
 
+export type ApiError = {
+  message: string;
+  code?: string;
+};
+
 export const searchApi = {
   search: async (query: string): Promise<SearchResult[]> => {
     // Simulate API call with timeout
-    return new Promise((resolve) => {
+    return new Promise((resolve, reject) => {
+      // Simulate random network errors (10% chance)
+      const shouldFail = Math.random() < 0.1;
+
       setTimeout(() => {
+        if (shouldFail) {
+          reject({
+            message: "Network error occurred while searching",
+            code: "NETWORK_ERROR",
+          });
+          return;
+        }
+
         // Mock results - filter based on query if it exists
         const allResults = [
           {
