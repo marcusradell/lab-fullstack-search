@@ -2,8 +2,7 @@ import { SearchResults } from "./search-results";
 import { useSearch } from "./hooks/use-search";
 
 export function Search() {
-  const { query, setQuery, results, isLoading, error, handleSearch } =
-    useSearch();
+  const { query, setQuery, state, handleSearch } = useSearch();
 
   return (
     <div>
@@ -33,14 +32,17 @@ export function Search() {
         </button>
       </div>
 
-      {error && (
+      {state.status === "error" && (
         <div className="mt-4 p-4 border-2 border-red-500 bg-red-900/50 text-red-100 font-mono shadow-lg shadow-red-900/50">
           <div className="font-bold mb-1 text-white">[ ERROR ]</div>
-          <div className="text-red-50">{error}</div>
+          <div className="text-red-50">{state.error}</div>
         </div>
       )}
 
-      <SearchResults results={results} isLoading={isLoading} />
+      <SearchResults
+        results={state.status === "success" ? state.results : []}
+        isLoading={state.status === "loading"}
+      />
     </div>
   );
 }
