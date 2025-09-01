@@ -1,39 +1,9 @@
-import { useState } from "react";
 import { SearchResults } from "./search-results";
-import { searchApi, type SearchResult } from "./api/search-api";
+import { useSearch } from "./hooks/use-search";
 
 export function Search() {
-  const [query, setQuery] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
-  const [results, setResults] = useState<SearchResult[]>([]);
-  const [error, setError] = useState<string | null>(null);
-
-  const handleSearch = async () => {
-    if (!query.trim()) return;
-
-    setIsLoading(true);
-    setError(null);
-
-    try {
-      const searchResults = await searchApi.search(query);
-      setResults(searchResults);
-    } catch (err) {
-      console.error("Search failed:", err);
-      setResults([]);
-
-      // Extract error message
-      const errorMessage =
-        err instanceof Error
-          ? err.message
-          : typeof err === "object" && err && "message" in err
-            ? String(err.message)
-            : "An unknown error occurred";
-
-      setError(errorMessage);
-    } finally {
-      setIsLoading(false);
-    }
-  };
+  const { query, setQuery, results, isLoading, error, handleSearch } =
+    useSearch();
 
   return (
     <div>
