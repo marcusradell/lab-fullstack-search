@@ -1,6 +1,7 @@
 import { SearchResults } from "./search-results";
 import { useSearch } from "./hooks/use-search";
-import { SearchControls, ErrorMessage } from "./search-components";
+import { SearchControls } from "./components/search-controls";
+import { ErrorMessage } from "./components/error-message";
 
 export function Search() {
   const { query, setQuery, state, handleSearch } = useSearch();
