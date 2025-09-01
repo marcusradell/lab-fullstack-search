@@ -1,9 +1,7 @@
+import { type SearchResult } from "./types";
+
 type SearchResultsProps = {
-  results: Array<{
-    id: string;
-    title: string;
-    description: string;
-  }>;
+  results: SearchResult[];
   isLoading?: boolean;
 };
 

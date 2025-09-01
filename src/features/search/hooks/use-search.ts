@@ -1,11 +1,6 @@
 import { useState } from "react";
-import { searchApi, type SearchResult } from "../api/search-api";
-
-type SearchState =
-  | { status: "idle" }
-  | { status: "loading" }
-  | { status: "success"; results: SearchResult[] }
-  | { status: "error"; error: string };
+import { searchApi } from "../api/search-api";
+import { type SearchState } from "../types";
 
 export function useSearch() {
   const [query, setQuery] = useState("");
@@ -34,17 +29,9 @@ export function useSearch() {
     }
   };
 
-  // Derived values for backward compatibility
-  const isLoading = state.status === "loading";
-  const results = state.status === "success" ? state.results : [];
-  const error = state.status === "error" ? state.error : null;
-
   return {
     query,
     setQuery,
-    results,
-    isLoading,
-    error,
     state,
     handleSearch,
   };

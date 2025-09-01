@@ -1,8 +1,4 @@
-export type SearchResult = {
-  id: string;
-  title: string;
-  description: string;
-};
+import { type SearchResult } from "../types";
 
 export type ApiError = {
   message: string;
