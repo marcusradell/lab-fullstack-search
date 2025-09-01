@@ -1,6 +1,6 @@
 # Conventions
 
-Only write the minimal amount of code needed to fulfill the requirements. This is to ensure that the code changes are simple to follow along with.
+Only write the minimal amount of code needed to fulfill the requirements. This is to ensure that the code changes are simple to follow along with and that any code change will be simple to review.
 
 ## TypeScript
 
@@ -8,4 +8,4 @@ Only write the minimal amount of code needed to fulfill the requirements. This i
 - Prefer `type` over `interface`.
 - Write files in `kebab-case`.
 - Prefer sending in explicit arguments over default parameters.
-
+- Create one file for each React component.
