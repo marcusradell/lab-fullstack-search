@@ -9,3 +9,4 @@ Only write the minimal amount of code needed to fulfill the requirements. This i
 - Write files in `kebab-case`.
 - Prefer sending in explicit arguments over default parameters.
 - Create one file for each React component.
+- All React elements with `className` props on them must be extracted to separate components.
