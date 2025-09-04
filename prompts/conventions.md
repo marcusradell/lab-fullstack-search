@@ -1,12 +1,17 @@
 # Conventions
 
-Only write the minimal amount of code needed to fulfill the requirements. This is to ensure that the code changes are simple to follow along with and that any code change will be simple to review.
+- Only write the minimal amount of code needed to fulfill the requirements. This is to ensure that the code changes are simple to follow along with and that any code change will be simple to review.
 
-## TypeScript
+- Avoid adding extra styling or features beyond what is explicitly requested.
 
 - Prefer named exports over default exports.
+
 - Prefer `type` over `interface`.
+
 - Write files in `kebab-case`.
+
 - Prefer sending in explicit arguments over default parameters.
+
 - Create one file for each React component.
-- All React elements with `className` props on them must be extracted to separate components.
+
+- Every single React element with a `className` props on them must be extracted as React components.
