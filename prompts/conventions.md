@@ -15,37 +15,39 @@ All listed convention rules must be followed.
 - Prefer sending in explicit arguments over default parameters.
 
 ### React
-- Create one file for each React component.
-- Every single React element with a `className` props on them must be extracted as React components.
+- Create one file for each custom React component.
+- Every single native HTML element with a `className` props on them must be abstracted as a custom React component.
 
 ## React element example
 
 ```tsx
 // ✅ CORRECT
-// src/pages/start-page.tsx
 
 function Page() {
-  return <Container><TopNav/></Container>;
-}
-
-// src/components/container.tsx
-
-type Props = {
-  children: React.ReactNode
-};
-
-function Container({children}: Props) {
-  return <div className="container mx-auto px-4">{children}</div>;
+  return (
+    <Container>
+      <TopNav>
+        <NavItem title="Home"/>
+        <NavItem title="About"/>
+      </TopNav>
+    </Container>
+  );
 }
 ```
 
 
 ```tsx
 // ❌ AVOID
-// src/pages/start-page.tsx
 
 function Page() {
-return <div className="container mx-auto px-4"><TopNav/></div>;  
+  return (
+    <div className="container mx-auto px-4">
+      <TopNav>
+        <NavItem title="Home"/>
+        <NavItem title="About"/>
+      </TopNav>
+    </div>
+  );
 }
 ```
 
