@@ -20,21 +20,33 @@ All listed convention rules must be followed.
 
 ## React element example
 
-```
-// start-page.tsx
+```tsx
+// ✅ CORRECT
+// src/pages/start-page.tsx
 
 function Page() {
   return <Container><TopNav/></Container>;
 }
 
-// container.tsx
+// src/components/container.tsx
 
 type Props = {
-  children: React.Element
+  children: React.ReactNode
 };
 
 function Container({children}: Props) {
   return <div className="container mx-auto px-4">{children}</div>;
 }
 ```
+
+
+```tsx
+// ❌ AVOID
+// src/pages/start-page.tsx
+
+function Page() {
+return <div className="container mx-auto px-4"><TopNav/></div>;  
+}
+```
+
 
