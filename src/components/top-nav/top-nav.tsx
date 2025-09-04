@@ -11,8 +11,6 @@ export function TopNav() {
         <NavLogo text="SEARCH" />
         <NavItems>
           <NavItem text="Home" isActive={true} />
-          <NavItem text="About" />
-          <NavItem text="Contact" />
         </NavItems>
       </NavContent>
     </NavContainer>
